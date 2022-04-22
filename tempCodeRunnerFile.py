@@ -1,5 +1,10 @@
+a,b = map(int, input().split())
 
-# n = int(input())
-# for i in range(n) :
-#   x, y = input().split()
-#   d[int(x)][int(y)] = 1
+if b % a == 0 :
+  x = b // a
+  print(f'{a}*{x}={b}')
+elif a % b == 0 :
+  x = a // b
+  print(f'{b}*{x}={a}')
+else:
+  print('none')
