@@ -23,7 +23,7 @@ def solution(n):
     return a
 
 '''
-ver2
+ver2    
 
 def digit_reverse(n):
     return list(map(int, reversed(str(n))))
