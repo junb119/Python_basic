@@ -1,0 +1,25 @@
+# def solution(strings,n) :
+#     '''strings의 문자열들을 n번째 글자를 기준으로 정렬해서 return하세요'''
+#     return sorted(strings, key = lambda x : (x[n], x))
+
+def sf(x, n) :
+    return x[n], x
+string = ["sun", "bed", "car"]
+n = 1
+
+key = string[n], x
+a = sorted(string, key)
+
+print(a)
+
+
+
+# def solution(strings, n) :
+#     new = []
+#     for i in strings :
+#         new.append(i[n]+1)
+#     new.sort()
+#     answer = []
+#     for i in new:
+#         answer.append(i[1:])
+#     return answer
