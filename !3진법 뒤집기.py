@@ -35,7 +35,6 @@ def solution(n):
         answer += str(re)
     print(answer)
     return int(answer, 3)
-print(solution(45))
 '''
 ver2
 
