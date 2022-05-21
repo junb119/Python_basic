@@ -96,56 +96,58 @@ no	new_id	result
 7단계 변화 없습니다.
 
 '''
-
-
+import re
 def solution(id) :
-    # 1단계
-    answer = ''
-    before = id
-    id = id.lower()
-    print(f'1단계 : {before} ---------> {id} ')
-    
-    # 2단계
-    before = id
-    for i in id :
-        if i.isalpha() or i.isdigit() or i in ['-','_','.'] :
-            answer += i
-    print(f'2단계 : {before} -> {answer} ')
-    # 3단계
-    before = answer
-    while '..' in answer :
-        answer = answer.replace('..','.')
-    print(f'3단계 : {before} -> {answer} ')
-    
-    # 4단계
-    before = answer
-    if answer[0] == '.' :
-        answer = answer[1:] if len(answer) > 1 else '.'
-    if answer[-1] == '.' :
-        answer = answer[:-1]
-    print(f'4단계 : {before} -> {answer} ')
-    # 5단계
-    before = answer
-    if answer == '' :
-        answer = 'a'
-    print(f'5단계 : {before} -> {answer} ')
 
-    # 6단계
-    before = answer
-    if len(answer) > 15 :
-        answer = answer[:15]
-        if answer[-1] == '.' :
-            answer = answer[:-1]
-    print(f'6단계 : {before} -> {answer} ')
-
-    # 7단계
-    before = answer
-    while len(answer) <= 2:
-        answer += answer[-1]
-    print(f'7단계 : {before} -> {answer} ')
-
-    return answer
+    # 1
+    new = id.lower()
     
+    # 2
+    new = re.sub('[^a-z0-9\-_.]','',new)
+
+    # 3
+    new = re.sub('[..]+','.',new)
+
+    # 4
+    new = new.strip('.')
+
+    # 5
+    if len(new) == 0 : new += 'a'
+    # 6
+    if len(new) >= 16 : 
+        new = new[:15]
+        new = re.sub('[.]$','',new)
+    # 7
+    if len(new) <= 2: 
+        while len(new) < 3 :
+            new += new[-1]
+        print('7',new)
+    return new
+
+'''
+ver2
+import re
+
+def solution(new_id):
+    st = new_id
+    st = st.lower()
+    st = re.sub('[^a-z0-9\-_.]', '', st)
+    st = re.sub('\.+', '.', st)
+    st = re.sub('^[.]|[.]$', '', st)
+    st = 'a' if len(st) == 0 else st[:15]
+    st = re.sub('^[.]|[.]$', '', st)
+    st = st if len(st) > 2 else st + "".join([st[-1] for i in range(3-len(st))])
+    return st
     
-        
-print(solution("=.="))
+def solution(new_id):
+    new_id = new_id.lower()
+    new_id = sub("[^a-z0-9-_.]", "", new_id)
+    new_id = sub("\.+", ".", new_id)
+    new_id = sub("(^\.|\.$)", "", new_id)
+    new_id = new_id if new_id else "a"
+    new_id = sub("\.$", "", new_id[:15])
+    new_id = new_id if len(new_id) > 3 else new_id + new_id[-1] * (3 - len(new_id))
+    return new_id
+
+v
+'''
