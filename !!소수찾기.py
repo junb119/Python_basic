@@ -27,4 +27,7 @@ def solution(numbers):
 
 '''
 ver2
+
+ver3
+
 '''
