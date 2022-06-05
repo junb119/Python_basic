@@ -25,3 +25,9 @@ def solution(s):
           break
       x = x+1 if w=="(" else x-1 if w==")" else x
   return x==0
+
+
+'''
+ver2
+
+'''
