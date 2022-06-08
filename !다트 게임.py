@@ -106,4 +106,7 @@ def solution(dartResult):
             n = i+1
 
     return sum(scores)
+    
+ver4
+
 '''
